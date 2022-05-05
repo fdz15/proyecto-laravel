@@ -167,7 +167,8 @@ return [
         /*
          * Package Service Providers...
          */
-         Reliese\Coders\CodersServiceProvider::class, 
+         Reliese\Coders\CodersServiceProvider::class,
+	     Laravel\Socialite\SocialiteServiceProvider::class, 
         /*
          * Application Service Providers...
          */
@@ -192,6 +193,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // ...
+	     'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ])->toArray(),
 
 ];

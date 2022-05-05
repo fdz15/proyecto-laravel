@@ -48,7 +48,7 @@
     </div>
     <div class="form-group">
         <label for="evidencia">Evidencia:</label>
-        <input type="file" id="evidencia" 
+        <input type="file" id=" evidencia" 
             accept="application/pdf"
             class="form-control" name="evidencia" />
     </div>

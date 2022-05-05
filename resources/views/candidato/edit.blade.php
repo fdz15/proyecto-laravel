@@ -19,8 +19,10 @@
             </ul>
         </div><br />
         @endif
-        <form method="post" action="{{ route('candidato.update', $candidato->id) }}"
+        <form method="post" 
+        action="{{ route('candidato.update', $candidato->id) }}"
         enctype="multipart/form-data">
+        onsubmit="return validateData();">
             {{ csrf_field() }}
             @method('PUT')
             <div class="form-group">
@@ -46,16 +48,20 @@
                 <label for="foto">Foto:</label>
                 <img src="/image/{{$candidato->foto}}" height="100px">
                 <input type="file" id="foto" accept="image/png, image/jpeg" 
-                 class="form-control" name="foto" />
+                 class="form-control" name="foto" onchange="previewImage(event,'imageCandidato')"/>
+                 
+                 <img src="" id="imageCandidato" width="200px" heigth ="200">
             </div>
             <div class="form-group">
                 <label for="perfil">Perfil:</label>
                 <input type="file" id="perfil" accept="application/pdf"
-                 class="form-control" name="perfil" />
+                 class="form-control" name="perfil" onchange="previewPDF(event,'previewPDF')" />
             </div>
-
+            <iframe id="previewPDF" style="disĺay:none;" title="preview"></iframe>
+            
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
     </div>
 </div>
+<script type="text/javascript" src="{{ URL::asset('js/custom.js') }}"></script>
 @endsection

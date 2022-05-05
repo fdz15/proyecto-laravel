@@ -30,3 +30,8 @@
                 <label for="descripcion">Ubicación:</label>
                 <input type="text" value="{{$casilla->ubicacion}}" class="form-control" name="ubicacion" />
             </div>
+            <button type="submit" class="btn btn-primary">Guardar cambios</button>
+        </form>
+    </div>
+</div>
+@endsection
