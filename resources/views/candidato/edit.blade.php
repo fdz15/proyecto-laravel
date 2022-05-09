@@ -21,7 +21,7 @@
         @endif
         <form method="post" 
         action="{{ route('candidato.update', $candidato->id) }}"
-        enctype="multipart/form-data">
+        enctype="multipart/form-data"
         onsubmit="return validateData();">
             {{ csrf_field() }}
             @method('PUT')
@@ -55,9 +55,12 @@
             <div class="form-group">
                 <label for="perfil">Perfil:</label>
                 <input type="file" id="perfil" accept="application/pdf"
-                 class="form-control" name="perfil" onchange="previewPDF(event,'previewPDF')" />
+                 class="form-control" name="perfil" onchange="return validarExt()" />
             </div>
-            <iframe id="previewPDF" style="disĺay:none;" title="preview"></iframe>
+            <br><br>
+			<div id="visorArchivo">
+				<!--Aqui se desplegará el fichero-->
+			</div>
             
             <button type="submit" class="btn btn-primary">Guardar</button>
         </form>
