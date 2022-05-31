@@ -1,46 +1,54 @@
 <?php
-namespace App\Http\Controllers\Auth;
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
-use Socialite; 
 
-class LoginController extends Controller
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+//use PDF;
+use mikehaertl\wkhtmlto\Pdf;
+
+class PDFController extends Controller
 {
-    
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    use AuthenticatesUsers;
+
+    public function generatePDF()
+    {
+        $data = [
+            'title' => 'Welcome to ItSolutionStuff.com',
+            'date' => date('m/d/Y')
+        ];
+          
+        $pdf = PDF::loadView('myPDF', $data);
+    
+        return $pdf->download('itsolutionstuff.pdf');
+    }
+    
+    public function preview()
+    {
+        return view('chart');
+    }
+
+    
+    public function download()
+    {
+        $render = view('chart')->render();
+  
+        $pdf = new Pdf;
+        $pdf->addPage($render);
+        $pdf->setOptions(['javascript-delay' => 5000]);
+        $pdf->saveAs(public_path('pdf'),('report.pdf'));
+        return response()->download(public_path('pdf'),('report.pdf'));
+    }
+
     public function index()
     {
-        return view('auth/login');
         //
     }
 
-    public function redirectToFacebookProvider()
-    {
-    return Socialite::driver('facebook')->redirect();
-    }
-    public function handleProviderFacebookCallback()
-    {
-    $auth_user = Socialite::driver('facebook')->user(); // Fetch authenticated user
-    //dd($auth_user);
-    return redirect("/menu");
-   }
-
-   public function logout(Request $request)
-   {
-       \Auth::logout();
-       $request->session()->invalidate();
-       $request->session()->regenerateToken();
-       return redirect("login");
-   }
-
- 
 
     /**
      * Show the form for creating a new resource.

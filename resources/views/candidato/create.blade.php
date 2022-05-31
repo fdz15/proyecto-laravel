@@ -18,7 +18,7 @@
                 @endforeach
             </ul>
         </div><br />
-        @endif
+        @endif 
         <form method="post" 
         action="{{ route('candidato.store') }} " 
         enctype="multipart/form-data"
@@ -61,5 +61,5 @@
         </form>
     </div>
 </div>
-<script type="text/javascript" src="{{ URL::asset('js/custom.js') }}"></script>
+<script type="text/javascript" src="{{ URL::asset('js/custom.js') }}"></script>|
 @endsection

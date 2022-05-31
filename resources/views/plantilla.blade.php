@@ -16,18 +16,21 @@
     <header>
         <div class="row">
             <div class="col-md-2">
-                <img src="/tecnm_sintexto.svg" width="200px">
+                <img src="/image/itvo.ico" width="200px">
             </div>
             <div class="col-md-8 text-center">
                 <h1>Instituto Tecnológico del Valle de Oaxaca</h1>
                 <h5>Elección de la reina ITVO</h5>
             </div>
+            
             <div class="col-md-2">
-
+           
             </div>
-
+            
+           
         </div>
     </header>
+    
     <div class="container">
         @yield('content')
     </div>
